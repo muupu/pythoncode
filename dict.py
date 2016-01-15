@@ -1,4 +1,4 @@
-
+#-*- coding: UTF-8 -*-
 
 ### test enumerate ###
 str = 'abcdefgh'
