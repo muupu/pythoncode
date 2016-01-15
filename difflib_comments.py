@@ -319,12 +319,12 @@ class SequenceMatcher:
             indices = b2j.setdefault(elt, []) # b2j中有elt的键，则返回该elt的indices列表；如果没有elt键，则会创建elt键及相应的indices列表，并在列表中添加elt的下标
             indices.append(i)
 
-        # Purge junk elements
+        # Purge junk elements 清除junk元素
         junk = set()
         isjunk = self.isjunk
         if isjunk:
-            for elt in list(b2j.keys()):  # using list() since b2j is modified
-                if isjunk(elt):
+            for elt in list(b2j.keys()):  # 对于b2j的每个键elt。using list() since b2j is modified
+                if isjunk(elt):           # isjunk函数是构造函数传进来的函数参数，判断是否junk元素，
                     junk.add(elt)
                     del b2j[elt]
 
