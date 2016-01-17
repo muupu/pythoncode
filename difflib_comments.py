@@ -320,13 +320,13 @@ class SequenceMatcher:
             indices.append(i)
 
         # Purge junk elements 清除junk元素
-        junk = set()
+        junk = set()         # junk字符集合
         isjunk = self.isjunk
         if isjunk:
             for elt in list(b2j.keys()):  # 对于b2j的每个键elt。using list() since b2j is modified
                 if isjunk(elt):           # isjunk函数是构造函数传进来的函数参数，判断是否junk元素，
                     junk.add(elt)
-                    del b2j[elt]
+                    del b2j[elt]          # 清除
 
         # Purge popular elements that are not junk
         popular = set()
