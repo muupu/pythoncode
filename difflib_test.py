@@ -18,3 +18,8 @@ print lm
 s = difflib.SequenceMatcher(None, "ab", "c")
 lm = s.find_longest_match(0, 2, 0, 1)
 print lm
+
+### stripping common prefix or suffix ###
+s = difflib.SequenceMatcher(None, "ab", "acab")
+lm = s.find_longest_match(0, 2, 0, 1)
+print lm
