@@ -429,6 +429,7 @@ class SequenceMatcher:
                 print 'newj2len', newj2len
                 if k > bestsize:
                     besti, bestj, bestsize = i-k+1, j-k+1, k
+                    print 'besti, bestj, bestsize =', besti, bestj, bestsize
             j2len = newj2len
 
         # Extend the best by non-junk elements on each end.  In particular,
