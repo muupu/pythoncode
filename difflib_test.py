@@ -1,6 +1,6 @@
 #-*- coding: UTF-8 -*-
 
-from difflib import SequenceMatcher
+from difflib_comments import SequenceMatcher
 
 ### find_longest_match ###
 s = SequenceMatcher(None, " abcd", "abcd abcd")
