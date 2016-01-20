@@ -1,6 +1,6 @@
 #-*- coding: UTF-8 -*-
 
-import difflib
+from difflib import SequenceMatcher, find_longest_match
 
 ### find_longest_match ###
 s = difflib.SequenceMatcher(None, " abcd", "abcd abcd")
@@ -30,4 +30,4 @@ print lm
 s = difflib.SequenceMatcher(None, "abcdeabce", "abcecabd")
 lm = s.find_longest_match(0, 9, 0, 8)
 print lm
-# Out[3]: Match(a=0, b=4, size=5)
+# Out[3]: Match(a=5, b=0, size=4)
