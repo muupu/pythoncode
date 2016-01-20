@@ -39,7 +39,14 @@ def test_get_matching_blocks():
 	mb = s.get_matching_blocks()
 	print mb
 
+def test_get_opcodes():
+	s = SequenceMatcher(None, "qabxcd", "abycdf")
+	for tag, i1, i2, j1, j2 in s.get_opcodes():
+		print ("%7s a[%d:%d] (%s) b[%d:%d] (%s)" % (tag, i1, i2, a[i1:i2], j1, j2, b[j1:j2]))
+
+
 if __name__ == "__main__":
     # test_find_longest_match()
     # test_find_longest_match2()
-    test_get_matching_blocks()
+    # test_get_matching_blocks()
+    test_get_opcodes();
