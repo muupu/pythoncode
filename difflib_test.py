@@ -34,6 +34,12 @@ def test_find_longest_match2():
 	print lm
 	# Out[3]: Match(a=5, b=0, size=4)
 
+def test_get_matching_blocks():
+	s = SequenceMatcher(None, "abcdeabce", "abcecabd")
+	mb = s.get_matching_blocks()
+	print mb
+
 if __name__ == "__main__":
     # test_find_longest_match()
-    test_find_longest_match2()
+    # test_find_longest_match2()
+    test_get_matching_blocks()
