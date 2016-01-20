@@ -317,10 +317,10 @@ class SequenceMatcher:
         self.b2j = b2j = {}
 
         for i, elt in enumerate(b): # 对于字符串b的每个字符elt
-            print "i, elt:" i, elt
+            print "i, elt:", i, elt
             indices = b2j.setdefault(elt, []) # b2j中有elt的键，则返回该elt的indices列表；如果没有elt键，则会创建elt键及相应的indices列表，并在列表中添加elt的下标
             indices.append(i)
-            print "b2j:" b2j
+            print "b2j:", b2j
 
         # Purge junk elements 清除junk元素
         junk = set()         # junk字符集合
