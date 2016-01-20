@@ -510,7 +510,30 @@ class SequenceMatcher:
                     queue.append((i+k, ahi, j+k, bhi))
         matching_blocks.sort()
 
-        
+        # It's possible that we have adjacent equal blocks in the
+        # matching_blocks list now.  Starting with 2.5, this code was added
+        # to collapse them.
+        i1 = j1 = k1 = 0
+        non_adjacent = []
+        for i2, j2, k2 in matching_blocks:
+            # Is this block adjacent to i1, j1, k1?
+            if i1 + k1 == i2 and j1 + k1 == j2:
+                # Yes, so collapse them -- this just increases the length of
+                # the first block by the length of the second, and the first
+                # block so lengthened remains the block to compare against.
+                k1 += k2
+            else:
+                # Not adjacent.  Remember the first block (k1==0 means it's
+                # the dummy we started with), and make the second block the
+                # new block to compare against.
+                if k1:
+                    non_adjacent.append((i1, j1, k1))
+                i1, j1, k1 = i2, j2, k2
+        if k1:
+            non_adjacent.append((i1, j1, k1))
+
+        non_adjacent.append( (la, lb, 0) )
+        self.matching_blocks = map(Match._make, non_adjacent)
         return self.matching_blocks
 
     def get_opcodes(self):
