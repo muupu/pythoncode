@@ -40,7 +40,9 @@ def test_get_matching_blocks():
 	print mb
 
 def test_get_opcodes():
-	s = SequenceMatcher(None, "qabxcd", "abycdf")
+	a = "qabxcd"
+	b = "abycdf"
+	s = SequenceMatcher(None, a, b)
 	for tag, i1, i2, j1, j2 in s.get_opcodes():
 		print ("%7s a[%d:%d] (%s) b[%d:%d] (%s)" % (tag, i1, i2, a[i1:i2], j1, j2, b[j1:j2]))
 
