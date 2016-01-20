@@ -46,9 +46,19 @@ def test_get_opcodes():
 	for tag, i1, i2, j1, j2 in s.get_opcodes():
 		print ("%7s a[%d:%d] (%s) b[%d:%d] (%s)" % (tag, i1, i2, a[i1:i2], j1, j2, b[j1:j2]))
 
+def test_get_grouped_opcodes():
+	from pprint import pprint
+	a = map(str, range(1,40))
+	b = a[:]
+	b[8:8] = ['i']     # Make an insertion
+	b[20] += 'x'       # Make a replacement
+	b[23:28] = []      # Make a deletion
+	b[30] += 'y'       # Make another replacement
+	pprint(list(SequenceMatcher(None,a,b).get_grouped_opcodes()))
 
 if __name__ == "__main__":
     # test_find_longest_match()
     # test_find_longest_match2()
     # test_get_matching_blocks()
-    test_get_opcodes();
+    # test_get_opcodes()
+    test_get_grouped_opcodes()
