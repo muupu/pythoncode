@@ -410,17 +410,23 @@ class SequenceMatcher:
         j2len = {}
         nothing = []
         for i in xrange(alo, ahi):
+            print 'i', i
             # look at all instances of a[i] in b; note that because
             # b2j has no junk keys, the loop is skipped if a[i] is junk
             j2lenget = j2len.get
             newj2len = {}
             for j in b2j.get(a[i], nothing):
+                print 'j', j
                 # a[i] matches b[j]
                 if j < blo:
                     continue
                 if j >= bhi:
                     break
+                print 'j2len', j2len
+                print 'newj2len', newj2len
                 k = newj2len[j] = j2lenget(j-1, 0) + 1
+                print 'k', k
+                print 'newj2len', newj2len
                 if k > bestsize:
                     besti, bestj, bestsize = i-k+1, j-k+1, k
             j2len = newj2len
