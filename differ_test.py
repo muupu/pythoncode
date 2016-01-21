@@ -9,14 +9,17 @@ def test_Differ():
 4. Complex is better than complicated.
 '''.splitlines(1)
 	print text1
-	print text1[0][-1]
+	# print text1[0][-1]
 	text2 = '''  1. Beautiful is better than ugly.
 3.   Simple is better than complex.
 4. Complicated is better than complex.
 5. Flat is better than nested.
 '''.splitlines(1)
 	print text2
-	print text2[0][-1]
+	# print text2[0][-1]
+	d = Differ()
+	result = list(d.compare(text1, text2))
+	print result
 
 
 if __name__ == "__main__":
