@@ -1,6 +1,7 @@
 #-*- coding: UTF-8 -*-
 
 from difflib_comments import SequenceMatcher, Differ
+from pprint import pprint as _pprint
 
 def test_Differ():
 	text1 = '''  1. Beautiful is better than ugly.
@@ -19,7 +20,7 @@ def test_Differ():
 	# print text2[0][-1]
 	d = Differ()
 	result = list(d.compare(text1, text2))
-	print result
+	_pprint(result)
 
 
 if __name__ == "__main__":
