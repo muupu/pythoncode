@@ -317,10 +317,10 @@ class SequenceMatcher:
         self.b2j = b2j = {}
 
         for i, elt in enumerate(b): # 对于字符串b的每个字符elt
-            print "i, elt:", i, elt
+            # print "i, elt:", i, elt
             indices = b2j.setdefault(elt, []) # b2j中有elt的键，则返回该elt的indices列表；如果没有elt键，则会创建elt键及相应的indices列表，并在列表中添加elt的下标
             indices.append(i)
-            print "b2j:", b2j
+            # print "b2j:", b2j
 
         # Purge junk elements 清除junk元素
         junk = set()         # junk字符集合
@@ -412,26 +412,26 @@ class SequenceMatcher:
         j2len = {}
         nothing = []
         for i in xrange(alo, ahi):
-            print 'i', i
+            #print 'i', i
             # look at all instances of a[i] in b; note that because
             # b2j has no junk keys, the loop is skipped if a[i] is junk
             j2lenget = j2len.get
             newj2len = {}
             for j in b2j.get(a[i], nothing):
-                print 'j', j
+                #print 'j', j
                 # a[i] matches b[j]
                 if j < blo:
                     continue
                 if j >= bhi:
                     break
-                print 'j2len', j2len
-                print 'newj2len', newj2len
+                #print 'j2len', j2len
+                #print 'newj2len', newj2len
                 k = newj2len[j] = j2lenget(j-1, 0) + 1
-                print 'k', k
-                print 'newj2len', newj2len
+                #print 'k', k
+                #print 'newj2len', newj2len
                 if k > bestsize:
                     besti, bestj, bestsize = i-k+1, j-k+1, k
-                    print 'besti, bestj, bestsize =', besti, bestj, bestsize
+                    #print 'besti, bestj, bestsize =', besti, bestj, bestsize
             j2len = newj2len
 
         # Extend the best by non-junk elements on each end.  In particular,
