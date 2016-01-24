@@ -979,13 +979,18 @@ class Differ:
         # (identical lines must be junk lines, & we don't want to synch up
         # on junk -- unless we have to)
         for j in xrange(blo, bhi):
+            print 'j:', j
             bj = b[j]
+            print 'bj:', bj
             cruncher.set_seq2(bj)
             for i in xrange(alo, ahi):
+                print 'i:', i
                 ai = a[i]
+                print 'ai:', ai
                 if ai == bj:
                     if eqi is None:
                         eqi, eqj = i, j
+                        print 'eqi, eqj:', eqi, eqj
                     continue
                 cruncher.set_seq1(ai)
                 # computing similarity is expensive, so use the quick
@@ -998,15 +1003,18 @@ class Differ:
                       cruncher.quick_ratio() > best_ratio and \
                       cruncher.ratio() > best_ratio:
                     best_ratio, best_i, best_j = cruncher.ratio(), i, j
+                    print 'best_ratio, best_i, best_j:', best_ratio, best_i, best_j
         if best_ratio < cutoff:
             # no non-identical "pretty close" pair
             if eqi is None:
                 # no identical pair either -- treat it as a straight replace
                 for line in self._plain_replace(a, alo, ahi, b, blo, bhi):
+                    print 'line:', line
                     yield line
                 return
             # no close pair, but an identical pair -- synch up on that
             best_i, best_j, best_ratio = eqi, eqj, 1.0
+            print 'best_i, best_j, best_ratio:', best_i, best_j, best_ratio
         else:
             # there's a close pair, so forget the identical pair (if any)
             eqi = None
@@ -1016,15 +1024,18 @@ class Differ:
 
         # pump out diffs from before the synch point
         for line in self._fancy_helper(a, alo, best_i, b, blo, best_j):
+            print 'line:', line
             yield line
 
         # do intraline marking on the synch pair
         aelt, belt = a[best_i], b[best_j]
+        print 'aelt, belt:', aelt, belt
         if eqi is None:
             # pump out a '-', '?', '+', '?' quad for the synched lines
             atags = btags = ""
             cruncher.set_seqs(aelt, belt)
             for tag, ai1, ai2, bj1, bj2 in cruncher.get_opcodes():
+                print 'tag, ai1, ai2, bj1, bj2:', tag, ai1, ai2, bj1, bj2
                 la, lb = ai2 - ai1, bj2 - bj1
                 if tag == 'replace':
                     atags += '^' * la
@@ -1039,13 +1050,17 @@ class Differ:
                 else:
                     raise ValueError, 'unknown tag %r' % (tag,)
             for line in self._qformat(aelt, belt, atags, btags):
+                print 'aelt, belt, atags, btags:', aelt, belt, atags, btags
+                print 'line:', line
                 yield line
         else:
             # the synch pair is identical
+            print '  ' + aelt
             yield '  ' + aelt
 
         # pump out diffs from after the synch point
         for line in self._fancy_helper(a, best_i+1, ahi, b, best_j+1, bhi):
+            print 'line:', line
             yield line
 
     def _fancy_helper(self, a, alo, ahi, b, blo, bhi):
