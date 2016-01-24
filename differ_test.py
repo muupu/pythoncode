@@ -22,6 +22,13 @@ def test_Differ():
 	result = list(d.compare(text1, text2))
 	_pprint(result)
 
+def test_fancy_replace():
+	d = Differ()
+	results = d._fancy_replace(['abcDefghiJkl\n'], 0, 1,
+    							['abcdefGhijkl\n'], 0, 1)
+	print ''.join(results),
+
 
 if __name__ == "__main__":
-	test_Differ()
+	# test_Differ()
+	test_fancy_replace()
