@@ -1109,10 +1109,15 @@ class Differ:
         # Can hurt, but will probably help most of the time.
         common = min(_count_leading(aline, "\t"),
                      _count_leading(bline, "\t"))
+        print 'common', common
         common = min(common, _count_leading(atags[:common], " "))
+        print 'common', common
         common = min(common, _count_leading(btags[:common], " "))
+        print 'common', common
         atags = atags[common:].rstrip()
         btags = btags[common:].rstrip()
+        print 'atags', atags
+        print 'btags', btags
 
         yield "- " + aline
         if atags:
