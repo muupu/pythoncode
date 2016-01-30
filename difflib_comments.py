@@ -916,6 +916,7 @@ class Differ:
 
         cruncher = SequenceMatcher(self.linejunk, a, b)
         for tag, alo, ahi, blo, bhi in cruncher.get_opcodes():
+            print 'tag, alo, ahi, blo, bhi:', tag, alo, ahi, blo, bhi
             if tag == 'replace':
                 g = self._fancy_replace(a, alo, ahi, b, blo, bhi)
             elif tag == 'delete':
@@ -926,7 +927,7 @@ class Differ:
                 g = self._dump(' ', a, alo, ahi)
             else:
                 raise ValueError, 'unknown tag %r' % (tag,)
-
+            print 'g', g
             for line in g:
                 yield line
 
