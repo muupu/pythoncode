@@ -28,7 +28,14 @@ def test_fancy_replace():
     							['abcdefGhijkl\n'], 0, 1)
 	print ''.join(results),
 
+def test_qformat():
+	d = Differ()
+	results = d._qformat('\tabcDefghiJkl\n', '\tabcdefGhijkl\n',
+		'  ^ ^  ^      ', '  ^ ^  ^      ')
+	for line in results: 
+		print repr(line)
 
 if __name__ == "__main__":
 	# test_Differ()
-	test_fancy_replace()
+	# test_fancy_replace()
+	test_qformat()
