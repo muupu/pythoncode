@@ -933,7 +933,7 @@ class Differ:
                 raise ValueError, 'unknown tag %r' % (tag,)
 
             for line in g:
-                print 'line:', line
+                print 'line1:', line
                 yield line
 
     def _dump(self, tag, x, lo, hi):
@@ -1016,7 +1016,7 @@ class Differ:
             if eqi is None:
                 # no identical pair either -- treat it as a straight replace
                 for line in self._plain_replace(a, alo, ahi, b, blo, bhi):
-                    print 'line:', line
+                    print 'line2:', line
                     yield line
                 return
             # no close pair, but an identical pair -- synch up on that
@@ -1031,7 +1031,7 @@ class Differ:
 
         # pump out diffs from before the synch point
         for line in self._fancy_helper(a, alo, best_i, b, blo, best_j):
-            print 'line:', line
+            print 'line3:', line
             yield line
 
         # do intraline marking on the synch pair
@@ -1064,7 +1064,7 @@ class Differ:
             print 'atags:', atags
             print 'btags:', btags
             for line in self._qformat(aelt, belt, atags, btags):
-                print 'line:', line
+                print 'line4:', line
                 yield line
         else:
             # the synch pair is identical
@@ -1073,7 +1073,7 @@ class Differ:
 
         # pump out diffs from after the synch point
         for line in self._fancy_helper(a, best_i+1, ahi, b, best_j+1, bhi):
-            print 'line:', line
+            print 'line5:', line
             yield line
 
     def _fancy_helper(self, a, alo, ahi, b, blo, bhi):
