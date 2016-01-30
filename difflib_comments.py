@@ -665,6 +665,10 @@ class SequenceMatcher:
 
         matches = reduce(lambda sum, triple: sum + triple[-1],
                          self.get_matching_blocks(), 0)
+        print ' self.get_matching_blocks():',  self.get_matching_blocks()
+        print 'matches: ', matches
+        print 'a, b', self.a, self.b
+        print 'len a, b', len(self.a), len(self.b)
         return _calculate_ratio(matches, len(self.a) + len(self.b))
 
     def quick_ratio(self):
