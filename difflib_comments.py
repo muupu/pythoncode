@@ -988,12 +988,12 @@ class Differ:
             for i in xrange(alo, ahi):
                 print 'i:', i
                 ai = a[i]
-                print 'ai:', ai
                 if ai == bj:
                     if eqi is None:
                         eqi, eqj = i, j
                         print 'eqi, eqj:', eqi, eqj
                     continue
+                print 'ai:', ai
                 cruncher.set_seq1(ai)
                 # computing similarity is expensive, so use the quick
                 # upper bounds first -- have seen this speed up messy
