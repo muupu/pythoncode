@@ -22,6 +22,10 @@ def test_Differ():
 	result = list(d.compare(text1, text2))
 	_pprint(result)
 
+def test_Differ2():
+	print ''.join(Differ().compare('one\ntwo\nthree\n'.splitlines(1),
+		'ore\ntree\nemu\n'.splitlines(1))),
+
 def test_fancy_replace():
 	d = Differ()
 	results = d._fancy_replace(['abcDefghiJkl\n'], 0, 1,
@@ -37,5 +41,6 @@ def test_qformat():
 
 if __name__ == "__main__":
 	# test_Differ()
+	test_Differ2()
 	# test_fancy_replace()
-	test_qformat()
+	# test_qformat()
