@@ -1001,6 +1001,7 @@ class Differ:
                 # note that ratio() is only expensive to compute the first
                 # time it's called on a sequence pair; the expensive part
                 # of the computation is cached by cruncher
+                print 'real_quick_ratio, quick_ratio, ratio:', cruncher.real_quick_ratio(), cruncher.quick_ratio(), cruncher.ratio()
                 if cruncher.real_quick_ratio() > best_ratio and \
                       cruncher.quick_ratio() > best_ratio and \
                       cruncher.ratio() > best_ratio:
