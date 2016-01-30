@@ -927,8 +927,9 @@ class Differ:
                 g = self._dump(' ', a, alo, ahi)
             else:
                 raise ValueError, 'unknown tag %r' % (tag,)
-            print 'g', g
+
             for line in g:
+                print 'line', line
                 yield line
 
     def _dump(self, tag, x, lo, hi):
