@@ -1050,9 +1050,13 @@ class Differ:
                     btags += ' ' * lb
                 else:
                     raise ValueError, 'unknown tag %r' % (tag,)
-                print 'atags, btags:', atags, btags
+                print 'atags:', atags
+                print 'btags:', btags
+            print 'aelt:', aelt
+            print 'belt:', belt
+            print 'atags:', atags
+            print 'btags:', btags
             for line in self._qformat(aelt, belt, atags, btags):
-                print 'aelt, belt, atags, btags:', aelt, belt, atags, btags
                 print 'line:', line
                 yield line
         else:
