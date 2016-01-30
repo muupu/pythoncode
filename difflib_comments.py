@@ -1037,6 +1037,7 @@ class Differ:
             for tag, ai1, ai2, bj1, bj2 in cruncher.get_opcodes():
                 print 'tag, ai1, ai2, bj1, bj2:', tag, ai1, ai2, bj1, bj2
                 la, lb = ai2 - ai1, bj2 - bj1
+                print 'la, lb:', la, lb
                 if tag == 'replace':
                     atags += '^' * la
                     btags += '^' * lb
@@ -1049,6 +1050,7 @@ class Differ:
                     btags += ' ' * lb
                 else:
                     raise ValueError, 'unknown tag %r' % (tag,)
+                print 'atags, btags:', atags, btags
             for line in self._qformat(aelt, belt, atags, btags):
                 print 'aelt, belt, atags, btags:', aelt, belt, atags, btags
                 print 'line:', line
@@ -1068,6 +1070,7 @@ class Differ:
         if alo < ahi:
             if blo < bhi:
                 g = self._fancy_replace(a, alo, ahi, b, blo, bhi)
+                print ''
             else:
                 g = self._dump('-', a, alo, ahi)
         elif blo < bhi:
