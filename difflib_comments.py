@@ -933,7 +933,7 @@ class Differ:
                 raise ValueError, 'unknown tag %r' % (tag,)
 
             for line in g:
-                print 'line', line
+                print 'line:', line
                 yield line
 
     def _dump(self, tag, x, lo, hi):
@@ -1081,7 +1081,6 @@ class Differ:
         if alo < ahi:
             if blo < bhi:
                 g = self._fancy_replace(a, alo, ahi, b, blo, bhi)
-                print ''
             else:
                 g = self._dump('-', a, alo, ahi)
         elif blo < bhi:
