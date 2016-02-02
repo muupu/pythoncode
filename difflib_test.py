@@ -1,6 +1,6 @@
 #-*- coding: UTF-8 -*-
 
-from difflib_comments import SequenceMatcher
+from difflib_comments import SequenceMatcher, get_close_matches
 
 def test_find_longest_match():
 	### find_longest_match ###
@@ -56,9 +56,14 @@ def test_get_grouped_opcodes():
 	b[30] += 'y'       # Make another replacement
 	pprint(list(SequenceMatcher(None,a,b).get_grouped_opcodes()))
 
+def test_getCloseMatches():
+	cm = get_close_matches("appel", ["ape", "apple", "peach", "puppy"])
+	print cm
+
 if __name__ == "__main__":
     # test_find_longest_match()
     # test_find_longest_match2()
     # test_get_matching_blocks()
     # test_get_opcodes()
-    test_get_grouped_opcodes()
+    # test_get_grouped_opcodes()
+    test_getCloseMatches()
