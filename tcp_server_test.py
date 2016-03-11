@@ -20,6 +20,7 @@ def tcplink(sock, addr):
     print 'Connection from %s:%s closed.' % addr
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
 # 监听端口:
 s.bind(('0.0.0.0', 9998))
 s.listen(5)
