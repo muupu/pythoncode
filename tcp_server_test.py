@@ -11,9 +11,9 @@ def tcplink(sock, addr):
     while True:
         data = sock.recv(1024)
         print "receive data: %s" % data
-        # time.sleep(1)
-        # if data == 'exit' or not data:
-        #     break
+        time.sleep(1)
+        if data == 'exit' or not data:
+            break
         # sock.send('Hello, %s!' % data)
     sock.close()
     print 'Connection from %s:%s closed.' % addr
